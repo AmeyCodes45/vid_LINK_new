@@ -1,10 +1,9 @@
 flask
 flask-cors
-ffmpeg
 gunicorn
-opencv-python-headless[numpy]
 numpy
+opencv-python-headless
 mediapipe
-tensorflow-cpu
+tensorflow==2.9.0
 requests
 gdown

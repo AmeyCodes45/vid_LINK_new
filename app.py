@@ -1,3 +1,4 @@
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import cv2
@@ -10,6 +11,13 @@ import os
 import subprocess
 from keras.models import load_model
 from collections import Counter
+import os
+if not os.path.exists("ffmpeg"):
+    os.system("wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-i686-static.tar.xz")
+    os.system("tar -xf ffmpeg-release-i686-static.tar.xz")
+    os.system("mv ffmpeg-*/ffmpeg .")
+    os.system("chmod +x ffmpeg")
+FFMEG_PATH = os.path.abspath("ffmpeg")
 
 app = Flask(__name__)
 CORS(app)
@@ -37,9 +45,8 @@ def download_video(video_url, output_path="downloaded_video.webm"):
                     file.write(chunk)
     return output_path
 
-# Convert WebM to MP4 using FFmpeg
 def convert_webm_to_mp4(input_path, output_path="converted_video.mp4"):
-    subprocess.run(["ffmpeg", "-i", input_path, "-c:v", "libx264", "-preset", "fast", "-c:a", "aac", output_path], check=True)
+    subprocess.run([FFMEG_PATH, "-i", input_path, "-c:v", "libx264", "-preset", "fast", "-c:a", "aac", output_path], check=True)
     return output_path
 
 # Analyze video using MediaPipe + FER2013
