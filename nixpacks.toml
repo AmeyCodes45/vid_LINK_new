@@ -1,5 +1,8 @@
 [phases.setup]
-nixPkgs = ["python312", "python312Packages.pip", "libglvnd"]
+nixPkgs = ["python312", "python312Packages.pip", "libglvnd", "ffmpeg"]
 
 [phases.install]
-cmds = ["python3 -m ensurepip", "pip install --no-cache-dir -r requirements.txt"]
+cmds = [
+  "python3.12 -m pip install --upgrade pip",
+  "pip install --no-cache-dir -r requirements.txt"
+]
