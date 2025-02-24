@@ -1,9 +1,9 @@
 flask
 ffmpeg
 gunicorn
-opencv-python
+opencv-python-headless
 numpy
 mediapipe
-tensorflow
+tensorflow-cpu
 requests
 gdown
