@@ -2,7 +2,7 @@ flask
 flask-cors
 ffmpeg
 gunicorn
-opencv-python-headless
+opencv-python-headless[numpy]
 numpy
 mediapipe
 tensorflow-cpu
