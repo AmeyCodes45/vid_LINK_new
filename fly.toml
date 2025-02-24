@@ -1,0 +1,21 @@
+# fly.toml
+app = "your-app-name"
+primary_region = "iad"  # Choose the region closest to you
+
+[build]
+  image = "python:3.9"
+
+[env]
+  PORT = "5000"
+
+[[services]]
+  internal_port = 5000
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
