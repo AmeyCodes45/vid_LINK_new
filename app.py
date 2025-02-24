@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import cv2
 import numpy as np
 import mediapipe as mp
@@ -11,6 +12,7 @@ from keras.models import load_model
 from collections import Counter
 
 app = Flask(__name__)
+CORS(app)
 
 # Load FER2013 Emotion Model
 FER_MODEL_PATH = "face_model.h5"  # Ensure this file is in the deployment directory
