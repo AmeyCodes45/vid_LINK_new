@@ -1,4 +1,5 @@
 flask
+ffmpeg
 gunicorn
 opencv-python
 numpy
